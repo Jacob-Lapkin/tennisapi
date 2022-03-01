@@ -1,0 +1,147 @@
+{% extends "layout.html" %} {% block body %}
+
+<div class="container-fluid text-center main-jumbo shadow" style="min-height: 30vh;">
+  <div class="pt-2">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link nav-item-link" aria-current="page" href="#why-container"
+          >Why</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-item-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-item-link" href="#developer-container">Quotes</a>
+      </li>
+      <li class="nav-item">
+        <button class=" ms-2 btn-out-primary">Login</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container-fluid jumbo-content">
+    <h1 class="text-light fw-bold jumbo-header">Welcome to Tennis API</h1>
+    <div class="text-center text-light pt-2 ps-5 pe-5">
+      <h5>
+        Go further in your tennis game with the #1 trusted leader in tennis
+        information
+      </h5>
+    </div>
+  </div>
+  <div class="text-center pb-5">
+    <button class="bttn-jelly bttn-md bttn-primary bg-primary-light text-dark">
+      Register
+    </button>
+  </div>
+</div>
+
+<!-- after jumbo -->
+<div id="why-container" class="container-fluid pt-5 pb-4" style="min-height: 20vh;">
+  <div class="text-center">
+    <h2 class="fw-bold">Why Tennis API?</h2>
+    <div class="ps-3 pe-3">
+      <p>
+        Whether your a developer or an active member of the tennis community,
+        <br />
+        having greater access to tennis information is key.
+      </p>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-3 col-md-4 p-3">
+      <div class="shadow rounded text-center pt-5 ps-2 pe-2 landing-widgets equipment-widget">
+        <h4 class="text-light fw-bold jumbo-header">Tennis Equipment</h4>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 p-3">
+      <div class="shadow rounded text-center pt-5 ps-2 pe-2 landing-widgets scores-widget">
+        <h4 class="text-light fw-bold jumbo-header">ATP Scores</h4>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 p-3">
+      <div
+        class="shadow rounded text-center pt-5 ps-2 pe-2 landing-widgets atp-widget"
+      >
+        <h4 class="text-light fw-bold jumbo-header">ATP Player Information</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="developer-container" class="container-fluid bg-secondary" style="min-height: 30vh;">
+  <div class="pt-5 pb-5 pr-4 pl-4">
+    <div class="text-center text-light pt-3 pb-3">
+      <h2 class="fw-bold">Developers Love Tennis API</h2>
+    </div>
+    <div class="container-fluid border-bottom border-top">
+      <div data-aos="fade-right" class="row justify-content-center text-light">
+        <div class="col-md-3 col-lg-4 p-4">
+          <p>
+            " Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Voluptas, nihil distinctio? Quam, omnis itaque harum earum totam
+            blanditiis, delectus consectetur corporis esse odit corrupti.
+            Dignissimos illum voluptates nesciunt. Repellat, nemo. "
+          </p>
+          <small>Jacob - Irvine, CA</small>
+        </div>
+        <div class="col-md-3 col-lg-4 p-4">
+          <p>
+            " Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Voluptas, nihil distinctio? Quam, omnis itaque harum earum totam
+            blanditiis, delectus consectetur corporis esse odit corrupti.
+            Dignissimos illum voluptates nesciunt. Repellat, nemo. "
+          </p>
+          <small>-Julia - Redondo Beach, CA</small>
+        </div>
+        <div class="col-md-3 col-lg-4 p-4">
+          <p>
+            " Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Voluptas, nihil distinctio? Quam, omnis itaque harum earum totam
+            blanditiis, delectus consectetur corporis esse odit corrupti.
+            Dignissimos illum voluptates nesciunt. Repellat, nemo. "
+          </p>
+          <small>Daniel - Palo Alto, CA</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- footer -->
+<div class="bg-footer">
+  <div class="container-fluid p-3 border-bottom border-secondary">
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-center">
+        <p>Get connected with us on social networks:</p>
+      </div>
+      <div class="col-md-4 d-inline text-center">
+        <div class='d-inline'>
+          <a href="" class="text-dark"><i class="fa-brands fa-facebook fa-2x"></i></a>
+        </div>
+        <div class='d-inline ms-5'>
+          <a href="" class="text-dark"><i class="fa-brands fa-instagram fa-2x"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center pt-5 pb-3">
+    <div class="col-sm-2 text-start">
+      <p class="fw-bold">TENNIS API</p>
+      <p>leader in tennis information</p>
+    </div>
+    <div class="col-sm-2 text-start">
+      <p class="fw-bold">USEFUL LINKS</p>
+      <a href="">Link 1</a><br>
+      <a href="">Link 2</a><br>
+      <a href="">Link 3</a>
+    </div>
+    <div class="col-sm-2 text-start">
+      <p class="fw-bold">CONTACT</p>
+      <span><i class="fa fa-phone" aria-hidden="true"></i></span><span> 3076307030</span><br>
+      <span><i class="fa fa-mail-bulk" aria-hidden="true"></i></span><span> jacobglapkin@gmail.com</span><br>
+      <span><i class="fas fa-search-location    "></i></span><span> Redondo Beach, CA 90277</span>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
