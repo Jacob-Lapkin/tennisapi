@@ -44,10 +44,12 @@ def scores(stat):
             url = requests.get("https://www.atptour.com/en/stats/aces/all/all/all/")
         if stat == "return-games-won":
             url = requests.get("https://www.atptour.com/en/stats/return-games-won/all/all/all/")
+        if stat == "break-points-converted":
+            url = requests.get("https://www.atptour.com/en/stats/break-points-converted/all/all/all/")
         stats = pd.read_html(url.text)
         stats_table = stats[0]
         stats_dict = stats_table.to_dict("records")
-    except ImportError:
-        return jsonify(message = "Incorrect stat inputted"), 400
+    except AttributeError:
+        return jsonify(message = "Incorrect statistic inputted"), 400
     return jsonify({stat : stats_dict})
     # return jsonify(Todays_scores = scores_dict)
