@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+<!-- flash messages -->
+<div style="position:fixed; left:25%; top:2%;z-index:9999;" class="container w-50 text-center">{% with messages = get_flashed_messages(with_categories=true)%}
+  {% if messages %}
+      {% for category, msg in messages %}
+      <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+        {{msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+  {% endif %}
+{% endwith%}</div>
+<div class="bg-dark" style="min-height:100vh">
+
+
+
+<!-- nav -->
+    <div class="pt-2 bg-dark">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link nav-item-link" aria-current="page" href="{{url_for('home.home')}}"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-item-link" href="#">Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-item-link" href="#developer-container">My Account</a>
+          </li>
+          <li class="nav-item">
+          </li>
+          <li class="nav-item">
+            <a href="{{url_for('logout')}}"><button class=" ms-2 btn-out-primary">Logout</button></a>
+          </li>
+        </ul>
+      </div>
+    
+    <!-- content -->
+    <div class="container-fluid text-center p-4">
+        <h1 class="fw-bold">
+            <span class="text-primary-light">T</span><span class="text-secondary-light">E</span><span class="text-primary-light">N</span><span class="text-secondary-light">N</span><span class="text-primary-light">I</span><span class="text-secondary-light">S</span><span class="text-primary-light"> A</span><span class="text-secondary-light">P</span><span class="text-primary-light">I</span>
+        </h1>
+    </div>
+    <div class="container ps-5 pb-3 text-light">
+      <h1 class="fw-bold">Welcome {{current_user.name}}</h1>
+
+    </div>
+
+<div class="container-fluid mb-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-4 p-3">
+            <div class="p-3 bg-light shadow rounded" style="min-height: 250px;">
+                <h4 class="fw-bold">Getting Started</h4>
+                <p>Here you can view your API Key to send POST/GET requests</p><br>
+                <p class="h5 fw-bold">API KEY:</p>
+                <p>{{current_user.key}}</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 p-3">
+            <div class="p-3 shadow rounded text-dark bg-secondary-light" style="min-height: 250px; position:relative;">
+                <h4 class="fw-bold">Documentation</h4>
+                <p>
+                    Most of th API is fairly intuitive. Though, many of the calls will need instructions.
+                </p>
+                <div class="text-center mt-5">
+                    <button class="bttn-jelly bttn-md bttn-primary bg-primary-light text-dark">
+                        View Instructions
+                      </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 p-3">
+            <div class="p-3 shadow rounded text-dark bg-primary-light" style="min-height: 250px;">
+                <h4 class="fw-bold">Requests Remaining</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer -->
+<div class="bg-footer">
+  <div class="container-fluid p-3 border-bottom border-secondary">
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-center">
+        <p>Get connected with us on social networks:</p>
+      </div>
+      <div class="col-md-4 d-inline text-center">
+        <div class='d-inline'>
+          <a href="" class="text-dark"><i class="fa-brands fa-facebook fa-2x"></i></a>
+        </div>
+        <div class='d-inline ms-5'>
+          <a href="" class="text-dark"><i class="fa-brands fa-instagram fa-2x"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center pt-5 pb-3">
+    <div class="col-sm-2 ms-4 text-start">
+      <p class="fw-bold">TENNIS API</p>
+      <p>leader in tennis information</p>
+    </div>
+    <div class="col-sm-2 ms-4 text-start mb-3">
+      <p class="fw-bold">USEFUL LINKS</p>
+      <a href="">Link 1</a><br>
+      <a href="">Link 2</a><br>
+      <a href="">Link 3</a>
+    </div>
+    <div class="col-sm-2 ms-4 text-start">
+      <p class="fw-bold">CONTACT</p>
+      <span><i class="fa fa-phone" aria-hidden="true"></i></span><span> 3076307030</span><br>
+      <span><i class="fa fa-mail-bulk" aria-hidden="true"></i></span><span> jacobglapkin@gmail.com</span><br>
+      <span><i class="fas fa-search-location    "></i></span><span> Redondo Beach, CA 90277</span>
+
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

@@ -4,19 +4,16 @@ from sqlalchemy import *
 from models import User, Racquets, User_schema, Users_schema, Racquet_schema, Racquets_schema, db
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, current_user, login_required, logout_user
+from api_key import generate_key
 
-# login manager
-login_manager = LoginManager()
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
 
 # bcrypt
 bcrypt = Bcrypt()
 
 auth = Blueprint("auth", __name__, url_prefix="")
 
+
+# Login and register via POSTING Json
 @auth.route("/register", methods=["GET", "POST"])
 def register():
     try: 
@@ -26,12 +23,13 @@ def register():
         password = user_info['password']
         hashed_password = bcrypt.generate_password_hash(password)
         check_user = User.query.filter_by(email = email).first()
+        key = generate_key()
         if check_user:
             return jsonify(message = "Email already exists")
-        new_user = User(name = name, email = email, password = hashed_password)
+        new_user = User(name = name, email = email, password = hashed_password, key=key)
         db.session.add(new_user)
         db.session.commit()
-        return jsonify(message = "Successfully registered"), 201
+        return jsonify(message = "Successfully registered", api_key = key), 201
 
     except KeyError:
         return jsonify(message = "argumnet missing or incorrect"), 400
@@ -44,7 +42,7 @@ def login():
             email = user_info['email']
             password = user_info['password']
             check_user = User.query.filter_by(email = email).first()
-            if check_user == False:
+            if check_user == None:
                 return jsonify(message = "email does not exist")
             if bcrypt.check_password_hash(check_user.password, password):
                 access_token = create_access_token(identity=email)

@@ -36,6 +36,14 @@ background-color: #b3a901 !important;
     background-color: #ffffff;
 }
 
+.text-primary-light {
+    color: #ede673
+}
+
+.text-secondary-light {
+    color: #9fc7e9
+}
+
 .nav-item-link {
 color:white;
 border-bottom: groove 1px transparent;
@@ -88,4 +96,8 @@ transition: border-bottom, .5s;
 .btn-out-primary:hover {
     color: black;
     background-color: #ede673;
+}
+
+.modal-style {
+    box-shadow: 0px 0px 10px white;
 }

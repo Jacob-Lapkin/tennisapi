@@ -1,16 +1,19 @@
+from email.policy import default
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 from flask_marshmallow import Marshmallow
+from flask_login import UserMixin
 
 ma = Marshmallow()
 db = SQLAlchemy()
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(255))
     email = db.Column(db.String(255))
     password = db.Column(db.String(255))
     key = db.Column(db.String(255))
+    paid = db.Column(db.Boolean, default=False)
 
 class Racquets(db.Model):
     id = db.Column(db.Integer, primary_key = True)
