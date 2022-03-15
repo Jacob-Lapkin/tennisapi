@@ -47,8 +47,10 @@
   </div>
 </div>
 
+
+
 <!-- after jumbo -->
-<div id="why-container" class="container-fluid pt-5 pb-4" style="min-height: 20vh;">
+<div id="why-container" class="container-fluid pt-5 pb-5" style="min-height: 20vh;">
   <div class="text-center">
     <h2 class="fw-bold">Why Tennis API?</h2>
     <div class="ps-3 pe-3">
@@ -59,25 +61,39 @@
       </p>
     </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-lg-3 col-md-4 p-3">
-      <div class="shadow rounded text-center pt-5 ps-2 pe-2 landing-widgets equipment-widget">
-        <h4 class="text-light fw-bold jumbo-header">Tennis Equipment</h4>
+
+  <!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide equipment-widget">
+      <div class="ps-4 pt-4">
+        <h1 class="fw-bold text-light">Equipment</h1>
       </div>
     </div>
-    <div class="col-lg-3 col-md-4 p-3">
-      <div class="shadow rounded text-center pt-5 ps-2 pe-2 landing-widgets scores-widget">
-        <h4 class="text-light fw-bold jumbo-header">ATP Scores</h4>
+    <div class="swiper-slide scores-widget">
+      <div class="ps-4 pt-4">
+        <h1 class="fw-bold text-light">ATP Information</h1>
       </div>
     </div>
-    <div class="col-lg-3 col-md-4 p-3">
-      <div
-        class="shadow rounded text-center pt-5 ps-2 pe-2 landing-widgets atp-widget"
-      >
-        <h4 class="text-light fw-bold jumbo-header">ATP Player Information</h4>
+    <div class="swiper-slide atp-widget">
+      <div class="ps-4 pt-4">
+        <h1 class="fw-bold text-light">Scores</h1>
       </div>
     </div>
   </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+
+</div>
+
+  
 </div>
 <div id="developer-container" class="container-fluid bg-secondary" style="min-height: 30vh;">
   <div class="pt-5 pb-5 pr-4 pl-4">
@@ -112,6 +128,26 @@
             Dignissimos illum voluptates nesciunt. Repellat, nemo. "
           </p>
           <small>Daniel - Palo Alto, CA</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid pb-5 pt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="p-5 text-center shadow rounded bg-light" data-aos="fade-up">
+          <h1>stat</h1>
+        </div>
+        <div class="p-5 text-center shadow rounded bg-primary-light mt-4" data-aos="fade-up">
+          <h1>stat</h1>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-5 mt-4">
+        <div class="p-5 text-center shadow rounded bg-primary-light" data-aos="fade-up">
+          <h1>stat</h1>
+        </div>
+        <div class="p-5 text-center shadow rounded bg-light mt-4" data-aos="fade-up">
+          <h1>stat</h1>
         </div>
       </div>
     </div>
@@ -189,6 +225,5 @@
     </div>
   </div>
 </div>
-
 
 {% endblock %}

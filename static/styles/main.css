@@ -101,3 +101,11 @@ transition: border-bottom, .5s;
 .modal-style {
     box-shadow: 0px 0px 10px white;
 }
+
+
+
+
+.swiper {
+    max-width: 600px;
+    height: 300px;
+  }

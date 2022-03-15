@@ -6,6 +6,8 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_jwt_extended import create_access_token, jwt_required, JWTManager, get_jwt_identity
 import stripe
+from dotenv import load_dotenv
+import os
 from models import Racquets_schema, Users_schema, User, Racquets, db, seed_racquets, ma
 from views.atp import atp
 from views.rackets import rackets
@@ -13,6 +15,8 @@ from views.auth import auth
 from views.home import homes
 from api_key import generate_key
 
+# loading dotenv
+load_dotenv()
 
 app = Flask(__name__)
 # app configs
@@ -43,7 +47,8 @@ jwt_manager = JWTManager(app)
 # init marshmallow
 ma.init_app(app)
 
-stripe.api_key = 'sk_test_51Kb9g8KZ3cPdrFsj1S6vJo4ZrPAVTMHpZ2yj9zRuQcpIQKFd2RpK8nSYFuq6DdfIABGvjhsGyRPQBDgB4qGyX5UL0083ectvfy'
+# stripe api key
+stripe.api_key = os.environ.get('stripe_key')
 
 
 #################################
@@ -74,6 +79,7 @@ def index():
         if bcrypt.check_password_hash(check_user.password, password): 
             flash("User logged in", "success")
             login_user(check_user)
+            session['user_id'] = check_user.id
             return redirect(url_for("home.home"))
         else: 
             flash("Password is incorrect", 'danger')
@@ -95,6 +101,7 @@ def registering():
         db.session.add(new_user)
         db.session.commit()
         user = User.query.filter_by(email = email).first()
+        session['user_id'] = user.id
         login_user(user)
         flash("Successfully registered", "success")
         return redirect(url_for("checkout"))
@@ -119,8 +126,8 @@ def create_checkout_session():
       'quantity': 1,
     }],
     mode='payment',
-    success_url="http://192.168.1.75:5000/success?session_id={CHECKOUT_SESSION_ID}",
-    cancel_url='http://192.168.1.75:5000/',
+    success_url="http://localhost:5000/success?session_id={CHECKOUT_SESSION_ID}",
+    cancel_url='http://localhost:5000/',
   )
 
 
@@ -128,13 +135,14 @@ def create_checkout_session():
 
 @app.route("/success")
 def success():
+    user_id = session["user_id"]
     try:
         session_id  = request.args.get('session_id')
         check_status = stripe.checkout.Session.retrieve(
     session_id)   
         if check_status['payment_status'] == "paid":
             print("This is Paid")
-            user = User.query.filter_by(id=current_user.id).first()
+            user = User.query.filter_by(id=user_id).first()
             user.paid = True
             db.session.commit()
             return redirect(url_for('home.home'))
