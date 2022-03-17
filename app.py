@@ -8,7 +8,7 @@ from flask_jwt_extended import create_access_token, jwt_required, JWTManager, ge
 import stripe
 from dotenv import load_dotenv
 import os
-from models import Racquets_schema, Users_schema, User, Racquets, db, seed_racquets, ma
+from models import Racquets_schema, Users_schema, User, Racquets, db, seed_racquets, ma, seed_tournamenttype
 from views.atp import atp
 from views.rackets import rackets
 from views.auth import auth
@@ -64,6 +64,7 @@ def db_drop():
         print("dropped database")
 def db_seed():
     with app.app_context():
+        seed_tournamenttype()
         seed_racquets()
 
 
@@ -101,7 +102,6 @@ def registering():
         db.session.add(new_user)
         db.session.commit()
         user = User.query.filter_by(email = email).first()
-        session['user_id'] = user.id
         login_user(user)
         flash("Successfully registered", "success")
         return redirect(url_for("checkout"))
@@ -135,7 +135,7 @@ def create_checkout_session():
 
 @app.route("/success")
 def success():
-    user_id = session["user_id"]
+    user_id = current_user.id
     try:
         session_id  = request.args.get('session_id')
         check_status = stripe.checkout.Session.retrieve(
