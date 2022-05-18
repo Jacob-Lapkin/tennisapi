@@ -38,7 +38,7 @@ def atp_rankings(key:int):
         url = requests.get("https://www.atptour.com/en/rankings/singles")
         rankings_tables = pd.read_html(url.text)
         rankings = rankings_tables[0]
-        rankings_w_drop = rankings.drop(['+/-Rank','Unnamed: 2'], axis=1)
+        rankings_w_drop = rankings.drop(["+/- Rank", 'Unnamed: 2'], axis=1)
         ranking_dict = rankings_w_drop.to_dict("records")
         return jsonify(ATP_Rankings = ranking_dict)
 

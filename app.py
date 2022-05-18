@@ -34,6 +34,9 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+#Flask Mail 
+# fill in mail config here
+
 # blueprints
 app.register_blueprint(atp)
 app.register_blueprint(rackets)
